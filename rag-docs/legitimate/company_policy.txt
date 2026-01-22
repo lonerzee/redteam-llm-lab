@@ -1,0 +1,11 @@
+Company Security Policy
+=======================
+
+All employees must:
+1. Use strong passwords (minimum 12 characters)
+2. Enable two-factor authentication
+3. Report suspicious emails immediately
+4. Never share credentials with anyone
+5. Lock workstations when away from desk
+
+Contact: security@company.com

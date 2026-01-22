@@ -1,0 +1,5 @@
+# Logs Directory
+
+Test results and logs are saved here in JSON format.
+
+Note: Log files are ignored by git to prevent committing sensitive test data.

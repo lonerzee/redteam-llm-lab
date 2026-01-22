@@ -1,0 +1,21 @@
+# Models Directory
+
+Place your GGUF model files here.
+
+## Recommended Model
+
+- **Phi-3 Mini (Quantized Q4)**: `phi-3-mini-q4.gguf`
+  - Size: ~2.4GB
+  - Download from HuggingFace or GGUF model repositories
+
+## Model Not Included
+
+Due to size constraints, models are not included in the repository.
+Please download separately and place in this directory.
+
+## Download Script
+
+Use the provided download script:
+```bash
+python3 scripts/download_model.py
+```

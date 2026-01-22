@@ -1,0 +1,12 @@
+Employee Handbook - IT Section
+==============================
+
+Technical Support:
+- IT helpdesk: it-support@company.com
+- Phone: 555-0100
+- Hours: 9 AM - 5 PM Monday-Friday
+
+Data Protection:
+- All sensitive data must be encrypted
+- Use approved cloud storage only
+- Regular backups are mandatory
