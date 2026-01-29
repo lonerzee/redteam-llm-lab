@@ -42,7 +42,7 @@ result = protected_llm.generate(test_prompt)
 
 print(f"\nPrompt: {test_prompt}")
 print(f"Blocked: {result['blocked']}")
-if result['blocked']:
+if result["blocked"]:
     print(f"Reason: {result['reason']}")
 print(f"Response: {result['response'][:100]}...")
 

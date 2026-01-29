@@ -11,17 +11,19 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 # Read requirements
 with open("requirements.txt", "r", encoding="utf-8") as fh:
-    requirements = [line.strip() for line in fh if line.strip() and not line.startswith("#")]
+    requirements = [
+        line.strip() for line in fh if line.strip() and not line.startswith("#")
+    ]
 
 setup(
     name="redteam-llm-lab",
     version="0.1.0",
-    author="Your Name",
-    author_email="your.email@example.com",
+    author="lonerzee",
+    author_email="lonerzee@users.noreply.github.com",
     description="A comprehensive security testing framework for Large Language Models",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/redteam-llm-lab",
+    url="https://github.com/lonerzee/redteam-llm-lab",
     packages=find_packages(exclude=["tests*", "docs*", "examples*"]),
     classifiers=[
         "Development Status :: 3 - Alpha",
@@ -79,8 +81,8 @@ setup(
     zip_safe=False,
     keywords="llm security redteam prompt-injection jailbreak ai-security",
     project_urls={
-        "Bug Reports": "https://github.com/yourusername/redteam-llm-lab/issues",
-        "Source": "https://github.com/yourusername/redteam-llm-lab",
+        "Bug Reports": "https://github.com/lonerzee/redteam-llm-lab/issues",
+        "Source": "https://github.com/lonerzee/redteam-llm-lab",
         "Documentation": "https://redteam-llm-lab.readthedocs.io/",
     },
 )

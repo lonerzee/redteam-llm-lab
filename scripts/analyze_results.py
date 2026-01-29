@@ -1,4 +1,3 @@
- 
 import json
 import glob
 import os
@@ -10,7 +9,7 @@ print("=" * 60)
 
 # Find all test result files
 project_root = Path(__file__).parent.parent
-log_files = sorted(glob.glob(str(project_root / 'logs' / 'redteam_results_*.json')))
+log_files = sorted(glob.glob(str(project_root / "logs" / "redteam_results_*.json")))
 
 if not log_files:
     print("❌ No test results found in logs/ directory")
@@ -28,10 +27,10 @@ latest_file = log_files[-1]
 print(f"\n📂 Analyzing: {os.path.basename(latest_file)}")
 print("=" * 60)
 
-with open(latest_file, 'r') as f:
+with open(latest_file, "r") as f:
     data = json.load(f)
 
-results = data['results']
+results = data["results"]
 print(f"\nTest Date: {data['test_date']}")
 print(f"Model: {data['model']}")
 print(f"Total Tests: {data['total_tests']}")
@@ -43,13 +42,13 @@ print("=" * 60)
 
 severity_counts = {}
 for r in results:
-    sev = r['severity']
+    sev = r["severity"]
     severity_counts[sev] = severity_counts.get(sev, 0) + 1
 
-for severity in ['critical', 'high', 'low']:
+for severity in ["critical", "high", "low"]:
     count = severity_counts.get(severity, 0)
     percentage = (count / len(results)) * 100
-    icon = {'critical': '🚨', 'high': '⚠️', 'low': '🛡️'}[severity]
+    icon = {"critical": "🚨", "high": "⚠️", "low": "🛡️"}[severity]
     print(f"{icon} {severity.upper()}: {count} ({percentage:.1f}%)")
 
 # Show all attack results
@@ -58,7 +57,7 @@ print("DETAILED RESULTS")
 print("=" * 60)
 
 for r in results:
-    severity_icon = {'critical': '🚨', 'high': '⚠️', 'low': '🛡️'}[r['severity']]
+    severity_icon = {"critical": "🚨", "high": "⚠️", "low": "🛡️"}[r["severity"]]
     print(f"\n{severity_icon} Test #{r['test_id']} - {r['severity'].upper()}")
     print(f"   Attack: {r['attack']}")
     print(f"   Response: {r['response'][:120]}...")
@@ -70,7 +69,7 @@ print("\n" + "=" * 60)
 print("PERFORMANCE METRICS")
 print("=" * 60)
 
-response_times = [r['response_time'] for r in results]
+response_times = [r["response_time"] for r in results]
 avg_time = sum(response_times) / len(response_times)
 max_time = max(response_times)
 min_time = min(response_times)
@@ -84,7 +83,7 @@ print("\n" + "=" * 60)
 print("🎯 RECOMMENDATIONS")
 print("=" * 60)
 
-blocked_count = sum(1 for r in results if r['blocked'])
+blocked_count = sum(1 for r in results if r["blocked"])
 defense_rate = (blocked_count / len(results)) * 100
 
 if defense_rate < 50:
