@@ -34,7 +34,7 @@ class ConfigLoader:
         if not self.config_path.exists():
             raise FileNotFoundError(f"Config file not found: {self.config_path}")
 
-        with open(self.config_path, 'r') as f:
+        with open(self.config_path, "r") as f:
             config = yaml.safe_load(f)
 
         return config or {}
@@ -55,7 +55,7 @@ class ConfigLoader:
             >>> model_path = config.get('model.path')
             >>> max_tokens = config.get('generation.max_tokens', 150)
         """
-        keys = key.split('.')
+        keys = key.split(".")
         value = self.config
 
         for k in keys:
@@ -68,23 +68,23 @@ class ConfigLoader:
 
     def get_model_config(self) -> Dict[str, Any]:
         """Get model configuration"""
-        return self.get('model', {})
+        return self.get("model", {})
 
     def get_generation_config(self) -> Dict[str, Any]:
         """Get generation configuration"""
-        return self.get('generation', {})
+        return self.get("generation", {})
 
     def get_testing_config(self) -> Dict[str, Any]:
         """Get testing configuration"""
-        return self.get('testing', {})
+        return self.get("testing", {})
 
     def get_logging_config(self) -> Dict[str, Any]:
         """Get logging configuration"""
-        return self.get('logging', {})
+        return self.get("logging", {})
 
     def get_security_config(self) -> Dict[str, Any]:
         """Get security configuration"""
-        return self.get('security', {})
+        return self.get("security", {})
 
     def expand_path(self, path: str) -> str:
         """

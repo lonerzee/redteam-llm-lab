@@ -21,9 +21,11 @@ from dataclasses import dataclass
 import json
 from datetime import datetime
 
+
 @dataclass
 class JailbreakResult:
     """Result from a jailbreak attempt"""
+
     technique: str
     category: str
     severity: str
@@ -33,6 +35,7 @@ class JailbreakResult:
     response: str
     analysis_score: float
     success: bool  # Whether jailbreak bypassed guardrails
+
 
 class JailbreakSimulator:
     """
@@ -64,7 +67,7 @@ class JailbreakSimulator:
             "violates",
             "inappropriate",
             "i'm not able",
-            "i must decline"
+            "i must decline",
         ]
 
         response_lower = result.response.lower()
@@ -108,7 +111,7 @@ class JailbreakSimulator:
             blocked=llm_result["blocked"],
             response=llm_result["response"],
             analysis_score=analysis.injection_score,
-            success=False
+            success=False,
         )
 
         # Evaluate if jailbreak succeeded
@@ -158,7 +161,7 @@ class JailbreakSimulator:
                 by_category[result.category] = {
                     "total": 0,
                     "blocked": 0,
-                    "successful": 0
+                    "successful": 0,
                 }
             by_category[result.category]["total"] += 1
             if result.blocked:
@@ -171,14 +174,18 @@ class JailbreakSimulator:
             "blocked_by_llm": blocked,
             "successful_jailbreaks": successful_jailbreaks,
             "defense_rate": (blocked / total * 100) if total > 0 else 0,
-            "jailbreak_success_rate": (successful_jailbreaks / total * 100) if total > 0 else 0,
-            "by_category": by_category
+            "jailbreak_success_rate": (
+                (successful_jailbreaks / total * 100) if total > 0 else 0
+            ),
+            "by_category": by_category,
         }
 
     def save_results(self, filename: str = None):
         """Save results to JSON file"""
         if filename is None:
-            filename = f"jailbreak_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+            filename = (
+                f"jailbreak_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+            )
 
         filepath = str(project_root / "logs" / filename)
 
@@ -193,17 +200,18 @@ class JailbreakSimulator:
                     "blocked": r.blocked,
                     "success": r.success,
                     "analysis_score": r.analysis_score,
-                    "response_preview": r.response[:200]
+                    "response_preview": r.response[:200],
                 }
                 for r in self.results
-            ]
+            ],
         }
 
-        with open(filepath, 'w') as f:
+        with open(filepath, "w") as f:
             json.dump(data, f, indent=2)
 
         print(f"\n✓ Results saved to: {filepath}")
         return filepath
+
 
 # Test the simulator
 if __name__ == "__main__":
@@ -227,7 +235,7 @@ if __name__ == "__main__":
     print(f"Jailbreak Success Rate: {summary['jailbreak_success_rate']:.1f}%")
 
     print("\n📋 By Category:")
-    for category, stats in summary['by_category'].items():
+    for category, stats in summary["by_category"].items():
         print(f"\n  {category}:")
         print(f"    Total: {stats['total']}")
         print(f"    Blocked: {stats['blocked']}")
