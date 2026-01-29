@@ -13,9 +13,12 @@ project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root / "scripts"))
 sys.path.insert(0, str(project_root / "modules" / "prompt_analyzer"))
 
-from jailbreak_templates import JAILBREAK_TEMPLATES, get_jailbreak_categories
-from protected_llm import ProtectedLLM
-from analyzer import PromptAnalyzer
+from modules.jailbreak_simulator.jailbreak_templates import (
+    JAILBREAK_TEMPLATES,
+    get_jailbreak_categories,
+)
+from scripts.protected_llm import ProtectedLLM
+from modules.prompt_analyzer.analyzer import PromptAnalyzer
 from typing import Dict, List
 from dataclasses import dataclass
 import json
